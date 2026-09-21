@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sys
 from sklearn.model_selection import train_test_split
+from numpy.polynomial.polynomial import polyval
 
 def build_matrix(M, t_values):
 
@@ -43,7 +44,7 @@ if __name__ == "__main__":
     print(coeff[2])
 
     plt.plot(df['0'], df[' 1'], 'o', label='Original data', markersize=10)
-    plt.plot(df['0'], coeff[0]*pow(df['0'], 3) + coeff[1]*pow(df['0'], 2) + coeff[2]*df['0'] + coeff[3], 'r', label='Fitted line')
+    plt.plot(df['0'], polyval(df['0'], coeff), 'r', label='Fitted line')
     plt.legend()
     plt.show()
 
